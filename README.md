@@ -37,7 +37,7 @@ The group proposes the implementation of a video surveillance system based on a 
 
 _Raoul Nuccetelli_ [@rsoul](https://www.github.com/rsoul)   
 _Matteo Attenni_ [@Mattens15](https://www.github.com/Mattens15)   
-_Mihai Zapodeanu_ [@djzapo](https://www.github.com/djzapo)   
+_Mihai Alxandru Zapodeanu_ [@djzapo](https://www.github.com/djzapo)   
 
 ___
 ### To do
