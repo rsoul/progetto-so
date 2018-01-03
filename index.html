@@ -6,8 +6,25 @@
     <!-- css di bootstrap4 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    var ip=$(address).val;
+    var ws=new WebSocket(ip);
+    ws.onmessage=function()
+    {
+      $
+    }
+    $(comandosx).onclick=function(){
+      ws.send("s");
+    }
+    $(comandodx).onclick=function(){
+      ws.send("d");
+    }
+    $(absoluteposition).onclick=function(){
+      ws.send($(coordinate).val);
+    }
+    </script>
 </head>
 <body>
 
@@ -33,6 +50,7 @@
   <div class="row" style="width:100%">
     <div class="col-12 col-sm-12 col-md-12" style="width: 960px; height:540px; background-color: #efefef;">
       <!-- contenitore per immagini live -->
+      <img id="live">
     </div>
   </div>
 
@@ -43,12 +61,12 @@
         <tr><td align="center">
          <form name="control-form" method="post">
             <div class="form-group">
-              <input type="submit" class="btn-inline" name="comandi" value="SX (45°)">
-              <input type="submit" class="btn-inline" name="comandi" value="DX (45°)">
+              <input id="comandosx" type="submit" class="btn-inline" name="comandi" value="SX (45°)">
+              <input id="comandodx" type="submit" class="btn-inline" name="comandi" value="DX (45°)">
             </div>
             <div class="form-group">
-              <input type="number" name="position" class="form-control-inline" min="0" max="359">
-              <input type="submit" name="sendposition" value="INVIA" class="btn-inline">
+              <input id="coordinate" type="number" name="position" class="form-control-inline" min="0" max="359">
+              <input id="absoluteposition" type="submit" name="sendposition" value="INVIA" class="btn-inline">
             </div>
           </form>
         </td></tr>
