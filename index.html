@@ -9,12 +9,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    var ip=$(address).val;
+    var ip=$(address).val;  //ispezionato da browser lo vede errato 
     var ws=new WebSocket(ip);
+
+    /*
     ws.onmessage=function()
     {
       $
-    }
+    }*/
+
     $(comandosx).onclick=function(){
       ws.send("s");
     }
@@ -29,7 +32,7 @@
     window.onload=function(){
       var c=document.getElementById("myCanvas");
       var ctx=c.getContext("2d");
-      var img=document.getElementByName("/stream/test.jpg");
+      var img=document.getElementById("live");
       ctx.drawImage(img,10,10);
     }
     </script>
@@ -42,6 +45,7 @@
   <div class="row" style="width:100%">
     <div class="col-12 col-sm-12 col-md-12" style="width: 960px; height:540px; background-color: #efefef;">
       <!-- contenitore per immagini live -->
+      <img id="live" alt="livestreaming" src="/stream/test.jpg" style="display:none" width="900px" height="500px">
       <canvas id="myCanvas" width="900px" height="500px" style="border:1px solid black;"/>
     </div>
   </div>
