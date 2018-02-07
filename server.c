@@ -1,11 +1,3 @@
-/*
- * project:     miniweb
- * author:      Oscar Sanchez (oms1005@gmail.com)
- * HTTP Server
- * WORKS ON BROWSERS TOO!
- * Inspired by IBM's nweb
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
