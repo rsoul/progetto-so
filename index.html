@@ -30,14 +30,27 @@
     }
     </script>
     <script>
-    window.onload=function(){
-      var refresh=0.5;
-      var streaming=document.getElementById("live");
-      function updateLive(){
-        streaming.src=streaming.src.split("?")[0]+"?"+newDate().getTime();
-      }
-      setInterval(updateLive,refresh*10);
-    }
+    function refresh(node)
+    {
+    var times = 500;
+
+    (function startRefresh()
+    {
+      var address;
+      if(node.src.indexOf('?')>-1)
+        address = node.src.split('?')[0];
+      else
+        address = node.src;
+      node.src = address+"?time="+new Date().getTime();
+
+      setTimeout(startRefresh,times);
+   })();
+  }
+  window.onload = function()
+  {
+    var node = document.getElementById('live');
+    refresh(node);
+  }
     </script>
  </head>
 <body>
@@ -48,7 +61,7 @@
   <div class="row" style="width:100%">
     <div class="col-12 col-sm-12 col-md-12" style="width: 960px; height:540px; background-color: #efefef;">
       <!-- contenitore per immagini live -->
-      <img id="live" alt="livestreaming" src="stream/test.jpg" width="900px" height="500px">
+      <img id="live" alt="livestreaming" src="stream/test.jpg" width="960px" height="540px" style="display:inline-block">
     </div>
   </div>
 
