@@ -36,7 +36,7 @@
       function updateLive(){
         streaming.src=streaming.src.split("?")[0]+"?"+newDate().getTime();
       }
-      setInterval(updateLive,refresh);
+      setInterval(updateLive,refresh*10);
     }
     </script>
  </head>
@@ -48,7 +48,7 @@
   <div class="row" style="width:100%">
     <div class="col-12 col-sm-12 col-md-12" style="width: 960px; height:540px; background-color: #efefef;">
       <!-- contenitore per immagini live -->
-      <img id="live" alt="livestreaming" src="/stream/test.jpg" style="display:inline" width="900px" height="500px">
+      <img id="live" alt="livestreaming" src="stream/test.jpg" width="900px" height="500px">
     </div>
   </div>
 
