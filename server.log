@@ -417,3 +417,13 @@ SORRY: file extension type not supported:GET /favicon.ico
  INFO: SEND:stream/test.jpg:5
  INFO: request:GET /favicon.ico HTTP/1.1**Host: 192.168.1.138:8080**Connection: keep-alive**User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36**Accept: image/webp,image/apng,image/*,*/*;q=0.8**Referer: http://192.168.1.138:8080/**Accept-Encoding: gzip, deflate**Accept-Language: it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7****:6
 SORRY: file extension type not supported:GET /favicon.ico
+ INFO: http server starting:8080:1195
+ INFO: request:GET / HTTP/1.1**Host: 192.168.1.138:8080**Connection: keep-alive**Upgrade-Insecure-Requests: 1**User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36**Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8**Accept-Encoding: gzip, deflate**Accept-Language: it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7****:1
+ INFO: SEND:index.html:1
+ INFO: request:GET /stream/test.jpg HTTP/1.1**Host: 192.168.1.138:8080**Connection: keep-alive**User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36**Accept: image/webp,image/apng,image/*,*/*;q=0.8**Referer: http://192.168.1.138:8080/**Accept-Encoding: gzip, deflate**Accept-Language: it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7****:2
+ INFO: SEND:stream/test.jpg:2
+ INFO: request:GET /favicon.ico HTTP/1.1**Host: 192.168.1.138:8080**Connection: keep-alive**User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36**Accept: image/webp,image/apng,image/*,*/*;q=0.8**Referer: http://192.168.1.138:8080/**Accept-Encoding: gzip, deflate**Accept-Language: it-IT,it;q=0.9,en-US;q=0.8,en;q=0.7****:3
+SORRY: file extension type not supported:GET /favicon.ico
+ INFO: http server starting:8080:1314
+ INFO: http server starting:8080:1336
+ INFO: http server starting:8080:1363
