@@ -34,7 +34,7 @@ struct {
 	{"jsp", "image/jsp" },  
 	{"xml", "text/xml"  },  
 	{"js","text/js"     },
-   {"css","test/css"   }, 
+    {"css","test/css"   }, 
 
 	{0,0} };
 
