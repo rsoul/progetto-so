@@ -8,49 +8,47 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+
+
     <script type="text/javascript">
-    var ip=$(address).val;
-    var ws=new WebSocket(ip);
-
-    /*
-    ws.onmessage=function()
-    {
-      $
-    }
-    */
-
+    
     $(comandosx).onclick=function(){
-      ws.send("s");
+     if(ws.readyState===ws.OPEN){
+      ws.send("s");}
     }
     $(comandodx).onclick=function(){
-      ws.send("d");
+      if(ws.readyState===ws.OPEN){
+      ws.send("d");}
     }
     $(absoluteposition).onclick=function(){
-      ws.send($(coordinate).val);
+      if(ws.readyState===ws.OPEN){
+      ws.send($(coordinate).val);}
     }
-    </script>
-    <script>
-    function refresh(node)
-    {
-    (function startRefresh()
-    {
-      var time=500; 
-      var address;
-      if(node.src.indexOf('?')>-1)
-        address = node.src.split('?')[0];
-      else
-        address = node.src;
-      node.src = address;
+    window.onload = function(){
+      var ip=$(address).val;
+      var ws=new WebSocket(ip);
+      ws.binaryType = "arraybuffer";
+      
+      }
+    ws.onopen= function(){
+        console.log("Socket connected to "+ ip);
+        ws.addEventListener("message";function(event){
+          var img=new Blob([event.data],{type: "image/jpg"})
+          $(live).attr("src",img);
+        }
 
-      setInterval(startRefresh,time);
-   })();
+    ws.onclose= function(){
+      console.log("Trying to reconnect socket...");
+      var ws=new WebSocket(ip);
+      ws.binaryType = "arraybuffer";
+      }
+
+
+      }
+      
   }
-  window.onload = function()
-  {
-    var node = document.getElementById('live');
-    refresh(node);
-  }
-    </script>
+  </script>
  </head>
 <body>
 
