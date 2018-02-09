@@ -32,18 +32,17 @@
     <script>
     function refresh(node)
     {
-    v00;
-
     (function startRefresh()
     {
+      var time=500; 
       var address;
       if(node.src.indexOf('?')>-1)
         address = node.src.split('?')[0];
       else
         address = node.src;
-      node.src = address;/*+"?time="+new Date().getTime();*/
+      node.src = address;
 
-      setInterval(startRefresh,times);
+      setInterval(startRefresh,time);
    })();
   }
   window.onload = function()
