@@ -7,7 +7,7 @@
     <script>
       setTimeout(function(){
         //location.reload();
-        document.getElementById("live").src="stream/test.jpg";
+        window.frames['streaming'].location.reload();
       }, 500);
     </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -54,7 +54,9 @@
   <div class="row" style="width:100%">
     <div class="col-12 col-sm-12 col-md-12" style="width: 960px; height:540px; background-color: #efefef;">
       <!-- contenitore per immagini live -->
-      <img id="live" alt="livestreaming" src="stream/test.jpg" width="960px" height="540px" style="display:inline-block 			\	\1\		">
+      <iframe id='streaming'>
+      <img id="live" alt="livestreaming" src="stream/test.jpg" width="960px" height="540px" style="display:inline-block">
+      </iframe>
     </div>
   </div>
 
