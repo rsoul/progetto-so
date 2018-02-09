@@ -29,24 +29,24 @@
       var ip=$(address).val;
       var ws=new WebSocket(ip);
       ws.binaryType = "arraybuffer";
-      
       }
     ws.onopen= function(){
         console.log("Socket connected to "+ ip);
         ws.addEventListener("message";function(event){
-          var img=new Blob([event.data],{type: "image/jpg"})
+          var img=new Blob([event.data],{type: "image/jpg"});
           var url=URL.createObjectURL(img);
           $(live).attr("src",url);
-        }
+        });
+    }
 
     ws.onclose= function(){
       console.log("Trying to reconnect socket...");
       var ws=new WebSocket(ip);
       ws.binaryType = "arraybuffer";
-      }
+    }
 
 
-      }
+      
       
   }
   </script>
