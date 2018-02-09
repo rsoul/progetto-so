@@ -8,47 +8,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
-
-
     <script type="text/javascript">
-    
-    $(comandosx).onclick=function(){
+    var address="ws://localhost:8080";
+    var ws=new WebSocket(address);
+    ws.binaryType = "arraybuffer";
+    $("comandosx").onclick=function(){
      if(ws.readyState===ws.OPEN){
       ws.send("s");}
     }
-    $(comandodx).onclick=function(){
+    $("comandodx").onclick=function(){
       if(ws.readyState===ws.OPEN){
       ws.send("d");}
     }
-    $(absoluteposition).onclick=function(){
+    $("absoluteposition").onclick=function(){
       if(ws.readyState===ws.OPEN){
       ws.send($(coordinate).val);}
     }
-    window.onload = function(){
-      var ip=$(address).val;
-      var ws=new WebSocket(ip);
-      ws.binaryType = "arraybuffer";
-      }
-    ws.onopen= function(){
+    ws.onopen=function(){
         console.log("Socket connected to "+ ip);
-        ws.addEventListener("message";function(event){
+        ws.addEventListener("message",function(event){
           var img=new Blob([event.data],{type: "image/jpg"});
           var url=URL.createObjectURL(img);
-          $(live).attr("src",url);
+          $("#live").attr("src",url);
         });
-    }
+	}
 
     ws.onclose= function(){
       console.log("Trying to reconnect socket...");
-      var ws=new WebSocket(ip);
+      var ws=new WebSocket(address);
       ws.binaryType = "arraybuffer";
-    }
-
-
-      
-      
-  }
+    } 
   </script>
  </head>
 <body>
@@ -59,7 +48,7 @@
   <div class="row" style="width:100%">
     <div class="col-12 col-sm-12 col-md-12" style="width: 960px; height:540px; background-color: #efefef;">
       <!-- contenitore per immagini live -->
-      <img id="live" alt="livestreaming" src="stream/test.jpg" width="960px" height="540px" style="display:inline-block">
+      <img id="live" alt="livestreaming" src="stream/test.jpg" width="960px" height="540px" style="display:inline-block 			\	\1\		">
     </div>
   </div>
 
