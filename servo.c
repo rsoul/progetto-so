@@ -4,10 +4,12 @@
 // using pin 2 for 5v      //
 // using pin 6 for ground  //
 // using pin 12(GPIO 18) for GPIO    //
-
-
 #include <stdio.h>
 #include <bcm2835.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include "servo.h"
 #define PI 180
 #define PIN RPI_GPIO_P1_12
 #define CHANNEL 0
