@@ -3,17 +3,17 @@
 // by Raoul Nuccetelli     //
 // using pin 2 for 5v      //
 // using pin 6 for ground  //
-// using pin 12(GPIO 18) for GPIO    //
+// using pin 12(GPIO 18) to modulate PWM    //
 #include <stdio.h>
 #include <bcm2835.h>
 #include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
 #include "servo.h"
+
+
 #define PI 180
 #define PIN RPI_GPIO_P1_12
 #define CHANNEL 0
-#define RANGE 2000
+#define RANGE 1024
 
 int calculateAngle(int currentPos,signed int angle){
 	if (currentPos+angle>2*PI){
@@ -27,28 +27,27 @@ int calculateAngle(int currentPos,signed int angle){
 	}
 }
 
-void moveCamera(signed int angle){
- //devo testare per poter scrivere questa funzione
-}
-
-void testRotation(){
-	for (int i = 0; i <5; i++)
-	{
-		bcm2835_gpio_write(PIN,HIGH);
-		bcm2835_delay(1000);
+void moveCamera(signed int angle,int currentPos){
+	//clockwise
+	if (angle>0){
+		bcm2835_pwm_set_data(CHANNEL,110);
+		bcm2835_delayMicroseconds(800000*(angle/PI));
+		bcm2835_pwm_set_data(CHANNEL,0);
+		currentPos-=angle; //update position
 	}
-
-	for (int i = 0; i < 5; i++)
-	{
-		bcm2835_gpio_write(PIN,LOW);
-		bcm2835_delay(1000);
+	//counterclockwise
+	else if(angle<0){
+		bcm2835_pwm_set_data(CHANNEL,30);
+		bcm2835_delayMicroseconds(200000*(-angle/PI));
+		bcm2835_pwm_set_data(CHANNEL,0);
+		currentPos+=angle; //update position
 	}
-}
+ }
 
 void initGPIO(){
 	if(bcm2835_init()){
-		bcm2835_gpio_fsel(PIN, BCM2835_GPIO_FSEL_OUTP); 	
-		bcm2835_pwm_set_clock(BCM2835_PWM_CLOCK_DIVIDER_16);
+		bcm2835_gpio_fsel(PIN, BCM2835_GPIO_FSEL_ALT5); 	
+		bcm2835_pwm_set_clock(375);
     	bcm2835_pwm_set_mode(CHANNEL, 1, 1);
     	bcm2835_pwm_set_range(CHANNEL, RANGE);
 		printf("Servo up and running!\n");}
