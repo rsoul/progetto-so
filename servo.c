@@ -10,12 +10,12 @@
 #include "servo.h"
 
 
-#define PI 180
+#define PI 180.0
 #define PIN RPI_GPIO_P1_12
 #define CHANNEL 0
 #define RANGE 1024
 
-int calculateAngle(int currentPos,signed int angle){
+float calculateAngle(float angle,float currentPos){
 	if (currentPos+angle>2*PI){
 		return currentPos+angle-2*PI;
 	}
@@ -27,18 +27,18 @@ int calculateAngle(int currentPos,signed int angle){
 	}
 }
 
-void moveCamera(signed int angle,int currentPos){
+void moveCamera(float angle,float currentPos){
 	//clockwise
 	if (angle>0){
 		bcm2835_pwm_set_data(CHANNEL,110);
-		bcm2835_delayMicroseconds(800000*(angle/PI));
+		bcm2835_delayMicroseconds(800000.0*(angle/PI));
 		bcm2835_pwm_set_data(CHANNEL,0);
 		currentPos-=angle; //update position
 	}
 	//counterclockwise
 	else if(angle<0){
 		bcm2835_pwm_set_data(CHANNEL,30);
-		bcm2835_delayMicroseconds(200000*(-angle/PI));
+		bcm2835_delayMicroseconds(200000.0*(-angle/PI));
 		bcm2835_pwm_set_data(CHANNEL,0);
 		currentPos+=angle; //update position
 	}
